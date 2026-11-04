@@ -1,0 +1,17 @@
+[
+  {
+    "username": "Admin",
+    "password": "admin123",
+    "status": "valid"
+  },
+  {
+    "username": "Admin123",
+    "password": "wrong123",
+    "status": "invalid"
+  },
+  {
+    "username": "Admin@gmail.com",
+    "password": "",
+    "status": "no pssword"
+  }
+]

@@ -1,0 +1,4 @@
+username,password,status
+Admin,admin123,valid
+Admin123,wrong123,invalid
+Admin@gmail.com,,no password
