@@ -156,4 +156,22 @@ export default class Admin {
     await expect(confirmDeleteButton).toBeVisible();
     await confirmDeleteButton.click();
 }
+
+
+
+  async logout()
+  {
+
+
+     const profileMenu = this.page.locator('.oxd-userdropdown-tab');
+     await expect(profileMenu).toBeVisible();
+     await expect(profileMenu).toBeEnabled();
+     await profileMenu.click();
+
+     const logoutMenuItem = this.page.getByRole('menuitem', { name: 'Logout' });
+     await expect(logoutMenuItem).toBeVisible();
+     await expect(logoutMenuItem).toBeEnabled();
+     await logoutMenuItem.click();
+
+  }
 }

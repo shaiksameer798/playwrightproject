@@ -84,7 +84,13 @@ export default defineConfig({
   // },
  use: {
   headless: false,
+  ignoreHTTPSErrors: true,
+    baseURL: 'https://restful-booker.herokuapp.com',
 
+    extraHTTPHeaders: {
+      Accept: 'application/json'
+    },
+   
   launchOptions: {
     slowMo: 2000,
   },

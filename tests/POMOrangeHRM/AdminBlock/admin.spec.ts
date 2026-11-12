@@ -1,44 +1,45 @@
-import { test } from '@playwright/test';
-import LoginPOM from '/Users/2446109/Documents/playwrightdemos/tests/POMOrangeHRM/LoginPOM.ts';
+import { test } from '../fixtures/fixtures';
 
 import PIM from '/Users/2446109/Documents/playwrightdemos/tests/POMOrangeHRM/PIM/PIM.ts';
 import admin from './admin';
 
 
-test("Admin ", async ({ page }) => {
+test("Admin ", async ({loginPOM,admin, page,pim, loginAdmin }) => {
 
 
 
 
 
-    const Admin=new admin(page);
 
 
-   const login = new LoginPOM(page);
+
+   const login = loginPOM;
    
-   const pim=new PIM(page);
-   
-       await login.navigateToLogin();
-       await login.login("Admin", "admin123");
-
-
-  await Admin.admin();
-
-
-await Admin.addbutton();
-
-
-await Admin.AddUser();
-
-await 
   
+   
+      
+
+
+  await admin.admin();
+
+
+await admin.addbutton();
+
+
+// await admin.AddUser();
+
+// await admin.searchusername();
+  
+
+
+
 
   await page.pause();
 
-
-
+});
+test.afterEach(async ({ admin }) => {
+  await admin.logout();
+});
    
 
 
-}
-    );

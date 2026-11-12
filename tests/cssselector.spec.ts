@@ -34,4 +34,7 @@ test("css selectors", async({page})=>{
 
    
 console.log(await Searcbox.nth(0).textContent());
+
+
+
 })
