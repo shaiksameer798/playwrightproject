@@ -42,7 +42,7 @@ const auth=await request.post('/auth',{
         headers: {
             'Cookie': `token=${token}`
         }
-     }); 
+    });
     const getBody = await get.json();
     console.log(getBody);
     expect(get.status()).toBe(200);
