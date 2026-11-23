@@ -1,6 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
 
+import dotenv from 'dotenv';
+dotenv.config();
+const result = dotenv.config();
 
+console.log(result);
+console.log("BASE_URL:", process.env.BASE_URL);
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -85,7 +90,8 @@ export default defineConfig({
  use: {
   headless: false,
   ignoreHTTPSErrors: true,
-    baseURL: 'https://restful-booker.herokuapp.com',
+    baseURL: process.env.BASE_URL,
+    
 
     extraHTTPHeaders: {
       Accept: 'application/json',
@@ -102,4 +108,5 @@ export default defineConfig({
   // video: 'retain-on-failure'
 
 },
+
 });

@@ -1,7 +1,13 @@
 import { expect, Page ,Locator} from '@playwright/test';
 
 export default class PIM {
-  constructor(private page: Page) {}
+
+
+
+  private page: Page;
+  constructor( page: Page) {
+    this.page = page;
+  }
 
   async navigateToPIM() {
     const pimLink = this.page.getByRole('link', { name: 'PIM' });

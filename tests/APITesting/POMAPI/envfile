@@ -1,0 +1,171 @@
+Environment Variables (.env) in Playwright
+What are Environment Variables?
+
+Environment Variables are used to store configuration values separately from the test code.
+
+These values can include:
+
+Base URLs
+Usernames
+Passwords
+API Keys
+Tokens
+Environment-specific settings
+
+Instead of hardcoding values inside the code, we store them in a .env file.
+
+Why are Environment Variables Important?
+Without .env
+TypeScript
+const username = "admin";
+const password = "password123";
+ 
+await request.post(
+"https://restful-booker.herokuapp.com/auth"
+);
+
+Problems:
+
+Sensitive data exposed in code
+Difficult to change environments
+Credentials may get pushed to GitHub
+Poor maintainability
+
+❌ Not recommended
+
+With .env
+.env File
+Plain Text
+BASE_URL=https://restful-booker.herokuapp.com
+ 
+USERNAME=admin
+ 
+PASSWORD=password123
+
+Now configuration is separated from code.
+
+✅ Better Security
+
+✅ Easy Maintenance
+
+✅ Environment Flexibility
+
+Install dotenv
+Shell
+npm install dotenv
+Load Environment Variables
+playwright.config.ts
+TypeScript
+import { defineConfig } from '@playwright/test';
+import dotenv from 'dotenv';
+ 
+dotenv.config();
+ 
+export default defineConfig({
+use: {
+baseURL: process.env.BASE_URL
+}
+});
+What does this do?
+TypeScript
+dotenv.config();
+
+Loads values from .env into:
+
+TypeScript
+process.env
+Access Variables
+
+Example:
+
+TypeScript
+const username = process.env.USERNAME;
+const password = process.env.PASSWORD;
+API Example
+TypeScript
+const auth = await request.post('/auth', {
+data: {
+username: process.env.USERNAME,
+password: process.env.PASSWORD
+}
+});
+
+Instead of:
+
+TypeScript
+username: "admin"
+password: "password123"
+Multiple Environment Support
+
+Real projects usually have:
+
+Plain Text
+DEV
+QA
+UAT
+PROD
+.env.dev
+Plain Text
+BASE_URL=https://dev-api.company.com
+.env.qa
+Plain Text
+BASE_URL=https://qa-api.company.com
+.env.uat
+Plain Text
+BASE_URL=https://uat-api.company.com
+
+The same tests run against different environments without changing code.
+
+Common Usage in Frameworks
+Plain Text
+project/
+│
+├── .env
+├── .env.qa
+├── .env.uat
+│
+├── tests
+├── fixtures
+├── utils
+└── playwright.config.ts
+Interview Question
+Why do we use Environment Variables?
+
+Answer:
+
+Environment Variables are used to store configuration and sensitive information outside the source code, such as URLs, usernames, passwords, API keys, and tokens. They improve security, support multiple environments, reduce hardcoding, and make automation frameworks easier to maintain.
+
+Interview Question
+What is process.env?
+
+Answer:
+
+process.env is a Node.js object that provides access to environment variables loaded from the operating system or .env files. In Playwright frameworks, it is commonly used to access configuration values such as base URLs, credentials, and API keys.
+
+Real Project Example
+
+Instead of:
+
+TypeScript
+await page.goto(
+'https://qa.orangehrm.com'
+);
+
+Use:
+
+TypeScript
+await page.goto(
+process.env.BASE_URL!
+);
+
+Now if the project moves from QA to UAT:
+
+Plain Text
+QA URL → Change .env only
+UAT URL → Change .env only
+
+✅ No code changes required.
+
+One-line Interview Answer
+
+Environment Variables help externalize configuration and sensitive data from the automation code, enabling secure, maintainable, and environment-independent test execution. 🚀
