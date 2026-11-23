@@ -7,6 +7,5 @@ test("Git Push Practice",async()=>{
 
     console.log("Git Push Practice Test");
 
-    console.log("sameer");
-
+    console.log("Executing Git Push Practice Test");
 })
