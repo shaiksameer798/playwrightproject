@@ -16,6 +16,20 @@ Practice project for learning Playwright test automation with TypeScript.
 - Assertions
 - TypeScript
 
+## Setup
+
+### Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+BASE_URL=https://your-api-url.com
+USERNAME=your-username
+PASSWORD=your-password
+```
+
+See `.env.example` for a template.
+
 ## Getting Started
 
 ```bash
