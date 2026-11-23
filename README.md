@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Playwright Automation Practice
 
 Practice project for learning Playwright test automation with TypeScript.
@@ -29,3 +30,7 @@ npx playwright test                      # run all tests
 npx playwright test tests/APITesting     # run a folder
 npx playwright show-report               # open the HTML report
 ```
+=======
+# GitPractice
+Starting
+>>>>>>> b5a7dcd (Initial commit)
