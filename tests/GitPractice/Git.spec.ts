@@ -9,3 +9,11 @@ test("Git Push Practice",async()=>{
 
     console.log("Executing Git Push Practice Test");
 })
+
+
+test("Git Pull Practice", async () => {
+
+    console.log("Git Pull Practice Test");
+    console.log("Executing Git Pull Practice Test");
+
+});
