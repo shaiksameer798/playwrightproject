@@ -96,7 +96,7 @@ for(let i=0;i<ds.length;i++)
 
         console.log(`char at index ${i} is ${ds.charAt(i)}`)
     }
-
+console.log(`Length of ds is ${ds.length}`);
 
 });
 
