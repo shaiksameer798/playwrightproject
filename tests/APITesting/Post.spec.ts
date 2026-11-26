@@ -18,10 +18,6 @@ test("Post request test", async ({ request }) => {
     },
     "additionalneeds" : "Breakfast"
 }
-
-      
-
-        
         
     });
     expect(curl.status()).toBe(200);

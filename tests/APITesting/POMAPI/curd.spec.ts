@@ -1,7 +1,7 @@
 
 
 
-import { test } from '/Users/2446109/Documents/playwrightdemos/tests/APITesting/POMAPI/fixtres.ts';
+import { test } from './fixtres';
 
 import { Booking } from './models';
 import { PatchBooking } from './Patch';

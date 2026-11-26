@@ -7,7 +7,7 @@ from '@playwright/test';
 import fs from 'fs';
 import { parse } from 'csv-parse/sync';
 
-const csvData = fs.readFileSync('/Users/2446109/Documents/playwrightdemos/tests/test.csv');
+const csvData = fs.readFileSync('./tests/test.csv');
 const loginData = parse(csvData, {
   columns: true,
   skip_empty_lines: true

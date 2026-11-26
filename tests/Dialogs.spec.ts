@@ -62,7 +62,7 @@ test("Verify the Confirm Dialog",async({page})=>{
 
 
 });
-test.only("Verify the Prompt Dialog",async({page})=>{
+test("Verify the Prompt Dialog",async({page})=>{
 
 
 //simple dialoug box

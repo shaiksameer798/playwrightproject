@@ -1,7 +1,7 @@
 import { test as base } from "@playwright/test";
 import BookingAPI from "./BookingAPI";
 import TokenManager from "./TokenManager";
-import { Booking } from "./models";
+
 type BookingAPIFixture = {
   bookingAPI: BookingAPI;
   tokensed: string;

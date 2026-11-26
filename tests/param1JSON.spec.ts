@@ -6,7 +6,7 @@ from '@playwright/test';
 
 
 
-import loginData from '/Users/2446109/Documents/playwrightdemos/tests/datajson.json';
+import loginData from './datajson.json';
 
 loginData.forEach(({username, password, status}:any)=>
 {

@@ -1,105 +1,48 @@
-import { test, expect ,request} from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
+test('Patch request test', async ({ request }) => {
+  // Generate token
+  const auth = await request.post('/auth', {
+    data: {
+      username: 'admin',
+      password: 'password123',
+    },
+  });
 
-test("Patch request test", async ({ request }) => {
-    
+  expect(auth.status()).toBe(200);
 
+  const authBody = await auth.json();
+  const token = authBody.token;
 
-const auth=await request.post('/auth',{
+  console.log('Token:', token);
 
+  // Update booking
+  const patchResponse = await request.patch('/booking/6059', {
+    data: {
+      firstname: 'shaik',
+      lastname: 'sameer',
+    },
+    headers: {
+      Cookie: `token=${token}`,
+    },
+  });
 
+  expect(patchResponse.status()).toBe(200);
 
-        data: {
-            "username" : "admin",
-            "password" : "password123"
-        }
-    })
+  const patchBody = await patchResponse.json();
+  console.log('PATCH Response:', patchBody);
 
-    const authBody = await auth.json();
-    
-    const token=authBody.token;
+  expect(patchBody.firstname).toBe('shaik');
+  expect(patchBody.lastname).toBe('sameer');
 
-    const curl=await request.patch('/booking/6059', {
+  // Verify updated data
+  const getResponse = await request.get('/booking/6059');
 
+  expect(getResponse.status()).toBe(200);
 
-        data:{
-            "firstname" : "shaik",
-            "lastname" : "sameer"
-        },
-        headers: {
-            'Cookie': `token=${token}`
-        }
+  const getBody = await getResponse.json();
+  console.log('GET Response:', getBody);
 
-        
-    });
-    const curlBody = await curl.json();
-    console.log(curlBody);
-
-    expect(curl.status()).toBe(200);
-   
-
-    const get=await request.get('/booking/6059', {
-        headers: {
-            'Cookie': `token=${token}`
-        }
-    });
-    const getBody = await get.json();
-    console.log(getBody);
-    expect(get.status()).toBe(200);
-    // expect(getBody.firstname).toBe("shaik");
-
-
-});
-
-import { test, expect ,request} from '@playwright/test';
-
-
-test("Patch request test", async ({ request }) => {
-    
-
-
-const auth=await request.post('/auth',{
-
-
-
-        data: {
-            "username" : "admin",
-            "password" : "password123"
-        }
-    })
-
-    const authBody = await auth.json();
-    
-    const token=authBody.token;
-
-    const curl=await request.patch('/booking/6059', {
-
-
-        data:{
-            "firstname" : "shaik",
-            "lastname" : "sameer"
-        },
-        headers: {
-            'Cookie': `token=${token}`
-        }
-
-        
-    });
-    const curlBody = await curl.json();
-    console.log(curlBody);
-
-    expect(curl.status()).toBe(200);
-   
-
-    const get=await request.get('/booking/6059', {
-        headers: {
-            'Cookie': `token=${token}`
-        }
-     }); 
-    const getBody = await get.json();
-    console.log(getBody);
-    expect(get.status()).toBe(200);
-    // expect(getBody.firstname).toBe("shaik");
-
-
+  expect(getBody.firstname).toBe('shaik');
+  expect(getBody.lastname).toBe('sameer');
 });

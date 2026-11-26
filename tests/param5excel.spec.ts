@@ -3,7 +3,7 @@ import * as XLSX from 'xlsx';
 
 // Read Excel File
 const workbook = XLSX.readFile(
-  '/Users/2446109/Documents/playwrightdemos/tests/dataExcelprt.xlsx'
+  './tests/dataExcelprt.xlsx'
 );
 
 const sheetName = workbook.SheetNames[0];
